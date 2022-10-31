@@ -16,11 +16,14 @@ class MyApp extends StatelessWidget {
       title: 'Example',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          elevation: 0.5,
+        ),
         textTheme: GoogleFonts.rubikTextTheme(),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: Colors.white,
-          onPrimary: Color.fromARGB(150, 95, 100, 222),
+          onPrimary: Color.fromARGB(210, 95, 100, 222),
           // Colors that are not relevant to AppBar in LIGHT mode:
           primaryVariant: Colors.grey,
           secondary: Colors.grey,
@@ -39,7 +42,6 @@ class MyApp extends StatelessWidget {
         // //fromARGB(255, 95, 100, 222),
         // ),
         primarySwatch: Colors.indigo,
-
       ),
       home: const MyHomePage(title: 'Welcome!'),
     );
@@ -88,71 +90,134 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 75,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              CustomIcons.head,
-              color: Colors.black54,
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 5, 8, 0),
+            child: IconButton(
+              icon: Image.asset(
+                "assets/images/profile.png",
+                scale: 1,
+              ),
+              onPressed: () {
+                // do something
+              },
             ),
-            onPressed: () {
-              // do something
-            },
-          )
+          ),
         ],
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
-          Padding(padding: EdgeInsets.fromLTRB(0,5,0,10),
-          child: Text(widget.title,
-          style:  TextStyle(fontSize: 16),
-          ),
-          ),
-          Text('arage@12gmail.com',
-            style:  GoogleFonts.rubik(
-              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 2),
+            child: Text(
+              widget.title,
+              style: TextStyle(fontSize: 15),
             ),
-          )
-        ]
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 2, 0, 5),
+            child: Text(
+              'arage@12gmail.com',
+              style: GoogleFonts.rubik(
+                textStyle:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ]),
 
+        shadowColor: Colors.white,
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          //    mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 100, 0, 5),
+              child: Image.asset(
+                "assets/images/people_image.png",
+                scale: 1.15,
+                alignment: Alignment.center,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Padding(
+              padding: EdgeInsets.fromLTRB(70, 85, 70, 15),
+              child: Text(
+                "Try to assign more tasks to your employees or "
+                "create a new project from scratch",
+                style: const TextStyle(
+                  fontSize: 14,
+                  height: 1.5,
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w600
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(38, 25, 38, 0),
+                    child: SizedBox(
+                      height: 40,
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Text("I need help",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15)),
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromARGB(255, 95, 100, 222),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      side: BorderSide(color: Color.fromARGB(255, 95, 100, 222),))))),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(38, 15, 38, 0),
+                    child: SizedBox(
+                      height: 40,
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Text("I want to help",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15)),
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromARGB(255, 95, 100, 222),),
+
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      side: BorderSide(color: Color.fromARGB(255, 95, 100, 222),))))),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
