@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          elevation: 0.2,
+          elevation: 1,
           iconTheme: IconThemeData(
             color: Colors.grey, //change your color here
           ),
@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
           primary: Colors.white,
           onPrimary: Color.fromARGB(210, 95, 100, 222),
           // Colors that are not relevant to AppBar in LIGHT mode:
-          primaryVariant: Colors.white,
-          secondary: Colors.white,
-          secondaryVariant: Colors.white,
+          primaryContainer: Colors.white,
+          secondary: Colors.grey,
+          secondaryContainer: Colors.grey,
           onSecondary: Colors.grey,
           background: Colors.white,
           onBackground: Colors.grey,
@@ -55,16 +55,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -76,12 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 75,
@@ -123,15 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ]
         ),
-        //
-        // shadowColor: Colors.white,
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          //    mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             Expanded(
               flex:7,
               child: Padding(
@@ -144,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-        Expanded(
+        const Expanded(
           flex:1,
           child:
                 Padding(
