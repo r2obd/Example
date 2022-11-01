@@ -1,3 +1,4 @@
+import 'package:competion/new_problem.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'custom_icons.dart';
@@ -16,22 +17,26 @@ class MyApp extends StatelessWidget {
       title: 'Example',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          elevation: 0.5,
+        appBarTheme: const AppBarTheme(
+          elevation: 0.2,
+          iconTheme: IconThemeData(
+            color: Colors.grey, //change your color here
+          ),
         ),
+        scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.rubikTextTheme(),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: Colors.white,
           onPrimary: Color.fromARGB(210, 95, 100, 222),
           // Colors that are not relevant to AppBar in LIGHT mode:
-          primaryVariant: Colors.grey,
-          secondary: Colors.grey,
-          secondaryVariant: Colors.grey,
+          primaryVariant: Colors.white,
+          secondary: Colors.white,
+          secondaryVariant: Colors.white,
           onSecondary: Colors.grey,
-          background: Colors.grey,
+          background: Colors.white,
           onBackground: Colors.grey,
-          surface: Colors.grey,
+          surface: Colors.white,
           onSurface: Colors.grey,
           error: Colors.grey,
           onError: Colors.grey,
@@ -67,18 +72,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,30 +87,32 @@ class _MyHomePageState extends State<MyHomePage> {
         toolbarHeight: 75,
         actions: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 5, 8, 0),
+            padding: const EdgeInsets.fromLTRB(0, 5, 8, 0),
             child: IconButton(
               icon: Image.asset(
                 "assets/images/profile.png",
-                scale: 1,
+                scale: 1.1,
               ),
               onPressed: () {
-                // do something
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewProblem() ));
               },
             ),
           ),
         ],
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+
+        title:
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 5, 0, 2),
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 2),
             child: Text(
               widget.title,
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 2, 0, 5),
+            padding: const EdgeInsets.fromLTRB(0, 2, 0, 5),
             child: Text(
               'arage@12gmail.com',
               style: GoogleFonts.rubik(
@@ -125,91 +121,112 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-        ]),
-
-        shadowColor: Colors.white,
+        ]
+        ),
+        //
+        // shadowColor: Colors.white,
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           //    mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 5),
-              child: Image.asset(
-                "assets/images/people_image.png",
-                scale: 1.15,
-                alignment: Alignment.center,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(70, 85, 70, 15),
-              child: Text(
-                "Try to assign more tasks to your employees or "
-                "create a new project from scratch",
-                style: const TextStyle(
-                  fontSize: 14,
-                  height: 1.5,
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w600
+
+            Expanded(
+              flex:7,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(38, 0, 38, 0),
+                child: Image.asset(
+                  "assets/images/people_image.png",
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(38, 25, 38, 0),
-                    child: SizedBox(
-                      height: 40,
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Text("I need help",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 15)),
-                          style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 95, 100, 222),
-                              ),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Color.fromARGB(255, 95, 100, 222),))))),
+
+        Expanded(
+          flex:1,
+          child:
+                Padding(
+                  padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                  child: Text(
+                    "Try to assign more tasks to your employees or "
+                    "create a new project from scratch",
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.5,
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w600
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ],
-            ),
+              ),
+
+
+        Expanded(
+          flex:2,
+          child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(38, 0, 38, 0),
+                          child: SizedBox(
+                           // height: 40,
+                            child: TextButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                    foregroundColor: MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                      const Color.fromARGB(255, 95, 100, 222),
+                                    ),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            side: const BorderSide(color: Color.fromARGB(255, 95, 100, 222),)))),
+                                child: const Text("I need help",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500, fontSize: 15))),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
             Row(
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(38, 15, 38, 0),
+                    padding: const EdgeInsets.fromLTRB(38, 0, 38, 20),
                     child: SizedBox(
-                      height: 40,
+                    //  height: 40,
                       child: TextButton(
                           onPressed: () {},
-                          child: Text("I want to help",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 15)),
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 95, 100, 222),),
+                                const Color.fromARGB(255, 95, 100, 222),),
 
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Color.fromARGB(255, 95, 100, 222),))))),
+                                      side: const BorderSide(color: Color.fromARGB(255, 95, 100, 222),)))),
+                          child: const Text("I want to help",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15))),
                     ),
                   ),
                 ),
               ],
             ),
+            ],
+              ),
+          ),
           ],
         ),
       ),
