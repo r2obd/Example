@@ -1,3 +1,4 @@
+import 'package:example/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          elevation: 1,
+          elevation: 0.5,
           iconTheme: IconThemeData(
-            color: Colors.grey, //change your color here
+            color: Colors.grey,
           ),
         ),
         scaffoldBackgroundColor: Colors.white,
@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           primary: Colors.white,
           onPrimary: Color.fromARGB(210, 95, 100, 222),
-          // Colors that are not relevant to AppBar in LIGHT mode:
           primaryContainer: Colors.white,
           secondary: Colors.grey,
           secondaryContainer: Colors.grey,
@@ -42,11 +41,6 @@ class MyApp extends StatelessWidget {
           error: Colors.grey,
           onError: Colors.grey,
         ),
-
-        // appBarTheme: AppBarTheme(
-        // color: const Color.fromARGB(255, 255, 255, 255),
-        // //fromARGB(255, 95, 100, 222),
-        // ),
         primarySwatch: Colors.indigo,
       ),
       home: const MyHomePage(title: 'Welcome!'),
@@ -63,7 +57,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
-
         title:
         Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +116,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-
         const Expanded(
           flex:1,
           child:
@@ -143,8 +134,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
-
         Expanded(
           flex:2,
           child:
@@ -153,56 +142,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(38, 0, 38, 0),
-                          child: SizedBox(
-                           // height: 40,
-                            child: TextButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                    foregroundColor: MaterialStateProperty.all<Color>(
-                                        Colors.white),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                      const Color.fromARGB(255, 95, 100, 222),
-                                    ),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10.0),
-                                            side: const BorderSide(color: Color.fromARGB(255, 95, 100, 222),)))),
-                                child: const Text("I need help",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500, fontSize: 15))),
-                          ),
-                        ),
-                      ),
+                      button("I need help", 38,0, Colors.white, const Color.fromARGB(255, 95, 100, 222),
+                          const Color.fromARGB(255, 95, 100, 222))
                     ],
                   ),
             Row(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(38, 0, 38, 20),
-                    child: SizedBox(
-                    //  height: 40,
-                      child: TextButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                const Color.fromARGB(255, 95, 100, 222),),
-
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: const BorderSide(color: Color.fromARGB(255, 95, 100, 222),)))),
-                          child: const Text("I want to help",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 15))),
-                    ),
-                  ),
-                ),
+                button("I want to help", 38,20, const Color.fromARGB(255, 95, 100, 222), Colors.transparent,
+                    const Color.fromARGB(255, 95, 100, 222)),
               ],
             ),
             ],
@@ -211,11 +158,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
